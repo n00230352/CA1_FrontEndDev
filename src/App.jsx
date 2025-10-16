@@ -1,4 +1,6 @@
+import { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router';
+
 
 //import components
 import Navbar from './components/Navbar';
@@ -8,12 +10,20 @@ import Home from './pages/Home';
 import SingleCountry from './pages/SingleCountry';
 
 export default function App () {
+
+    const [query, setQuery] = useState('');
+
+    const handleChange = (e) => {
+        console.log(e.target.value);
+        setQuery(e.target.value)
+    };
+
     return (
         <>
             <Router>
-                <Navbar />
+                <Navbar query={query} setQuery={handleChange} />
                 <Routes>
-                    <Route path='/' element={<Home />} />
+                    <Route path='/' element={<Home query={query} />} />
                     <Route path='/country/:name' element={<SingleCountry />} />
                 </Routes>
             </Router>

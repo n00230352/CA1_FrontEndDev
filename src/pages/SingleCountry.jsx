@@ -25,9 +25,9 @@ export default function SingleCounty(){
     console.log(country.currencies);
     console.log(Object.keys(country.currencies));
 
-    let currencies =  Object.keys(country.currencies).map(currency => {
+    let currencies =  Object.keys(country.currencies).map((currency, i) => {
         return (
-            <p>
+            <p key={i}>
                 <b>Code: </b> {currency}
                 <br/>
                 <b>Name: </b> {country.currencies[currency].name}
